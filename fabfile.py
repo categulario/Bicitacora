@@ -9,3 +9,8 @@ from fabric.decorators import task
 def lmigrate():
     """Corre las migraciones respectivas"""
     local('./dev_manage.py migrate')
+
+@task
+def schema():
+    """Crea las migraciones"""
+    local('./dev_manage schemamigration xbapp --auto')
