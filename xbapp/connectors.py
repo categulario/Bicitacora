@@ -2,11 +2,9 @@
 from django.db.models.signals import post_save, pre_save
 from xbapp.models import Ciclista
 
-def incrementa_matricula(sender, **kwargs):
+def crea_perfil(sender, **kwargs):
     """crea la siguiente matrícula para ser usada por un alumno"""
     if kwargs['created']:
-        n = NumeroMatricula.objects.filter(anio=current_year())[:1][0]
-        m = NumeroMatricula(anio=current_year(), numero=n.numero+settings.ECOLE_MATRICULA_INCREMENTO)
-        m.save()
+        nuevo_ciclista  = Ciclista()
 
-post_save.connect(incrementa_matricula, sender=Ciclista)
+post_save.connect(crea_perfil, sender=Ciclista)

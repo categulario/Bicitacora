@@ -4,16 +4,17 @@ from django.contrib.auth import get_user_model
 
 class Ciclista(models.Model):
     """Define a un usuario del sistema"""
-    nombre              = models.CharField(max_length=70)
+    nombre              = models.CharField(max_length=70, blank=True)
     facebook            = models.CharField(max_length=70, blank=True)
     twitter             = models.CharField(max_length=70, blank=True)
     score               = models.IntegerField(default=0)
     sexo                = models.CharField(max_length=1, choices=(
         ('M', 'Masculino'),
         ('F', 'Femenino'),
-    ))
-    fecha_nacimiento    = models.DateField()
+    ), default='M')
+    fecha_nacimiento    = models.DateField(blank=True, null=True)
     fecha_registro      = models.DateField(auto_now_add=True)
+    usuario             = models.ForeignKey(get_user_model())
 
     def __unicode__(self):
         return self.nombre
