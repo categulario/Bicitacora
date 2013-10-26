@@ -2,7 +2,7 @@
 import os
 PROJECT_PATH = os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), '../'))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
