@@ -5,4 +5,5 @@ def inicio(request):
     return HttpResponse('Hola, humano', content_type="text/plain")
 
 def registro(request):
+    nombre = request.POST.get('nombre')
     return HttpResponse('yei!', content_type='text/plain')
