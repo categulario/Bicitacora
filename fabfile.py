@@ -13,4 +13,4 @@ def lmigrate():
 @task
 def schema():
     """Crea las migraciones"""
-    local('./dev_manage schemamigration xbapp --auto')
+    local('./dev_manage.py schemamigration xbapp --auto')
