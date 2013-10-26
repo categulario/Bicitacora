@@ -14,7 +14,7 @@ class Ciclista(models.Model):
     ), default='M')
     fecha_nacimiento    = models.DateField(blank=True, null=True)
     fecha_registro      = models.DateField(auto_now_add=True)
-    usuario             = models.ForeignKey(get_user_model())
+    usuario             = models.OneToOneField(get_user_model())
 
     def __unicode__(self):
         return self.nombre
