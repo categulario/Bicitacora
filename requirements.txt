@@ -1,4 +1,5 @@
 django
 south
-sekizai
+django-sekizai
 fabric
+mysqldb
