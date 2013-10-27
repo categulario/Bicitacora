@@ -91,7 +91,7 @@ def login(request):
 @csrf_exempt
 @require_POST
 def registra_ruta(request):
-    f = file('milog.log', 'w')
+    f = file('milog.log', 'w') #TODO eliminar estas lineas
     f.write(json.dumps(request.POST['ruta']))
     f.close()
     if 'token' in request.POST and 'ruta' in request.POST:
