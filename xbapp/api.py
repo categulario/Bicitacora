@@ -130,7 +130,7 @@ def registra_ruta(request):
                         'error': 1,
                         'msg': str(ve)
                     }
-        except MODELO_USUARIO.DoesNotExist:
+        except Ciclista.DoesNotExist:
             result = {
                 'error': 2,
                 'msg': 'invalid_user'

@@ -3,8 +3,17 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from uuid import uuid1
 
+MODELO_USUARIO = get_user_model()
+
 def crea_uid():
     return str(uuid1())
+
+def existe_usuario(**kwargs):
+    try:
+        MODELO_USUARIO.objects.get(**kwargs)
+        return True
+    except MODELO_USUARIO.DoesNotExist:
+        return False
 
 class Ciclista(models.Model):
     """Define a un usuario del sistema"""

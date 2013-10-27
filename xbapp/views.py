@@ -6,7 +6,11 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from xbapp.forms import LugarForm
+from xbapp.forms import LugarForm, APILoginForm
+from xbapp.models import existe_usuario
+from django.contrib.auth import get_user_model
+
+MODELO_USUARIO = get_user_model()
 
 def inicio(request):
     data = {}
@@ -17,7 +21,7 @@ def login(request):
     """Procesa el login"""
     if not request.user.is_authenticated():
         username = request.POST.get('correo')
-        password = request.POST.get('pass')
+        password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
@@ -26,6 +30,17 @@ def login(request):
             else:
                 messages.error(request, 'Lo sentimos, esta cuenta está desactivada')
         else:
+            # buscamos el correo, si no existe, lo mandamos a registro
+            if existe_usuario(email=request.POST.get('correo', '')):
+                messages.error(request, 'contraseña incorrecta')
+            else:
+                # lo procedemos a inscribir
+                formulario = APILoginForm(request.POST)
+                if formulario.is_valid():
+                    nuevo_usuario = MODELO_USUARIO(username=request.POST.get('correo'))
+                else:
+                    messages.warning(request, 'datos de registro inválidos')
+                    return HttpResponseRedirect('/')
             messages.error(request, 'Nadie registrado con ese correo, verifique por favor')
     else:
         messages.warning(request, 'Ya tienes una sesión')
