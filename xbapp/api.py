@@ -91,6 +91,7 @@ def login(request):
 @csrf_exempt
 @require_POST
 def registra_ruta(request):
+    print request.POST['ruta']
     if 'token' in request.POST and 'ruta' in request.POST:
         try:
             ciclista = Ciclista.objects.get(token=request.POST.get('token', ''))

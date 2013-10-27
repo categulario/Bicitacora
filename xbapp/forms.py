@@ -33,7 +33,9 @@ def valida_ruta(ruta_dict):
                         return
                 else:
                     raise ValidationError('formato de ruta invalido (valor faltante)')
-    raise ValidationError('formato de ruta invalido (cabecera faltante)')
+            return
+    else:
+        raise ValidationError('formato de ruta invalido (cabecera faltante)')
 
 def valida_lugar(lugar_dict):
     return likethis(lugar_dict, {
