@@ -207,5 +207,5 @@ def rutas(request):
             'latitud': p.latitud,
             'longitud': p.longitud,
         } for p in r.puntos.all()]
-    } for r in Ruta.objects.all()[:10]]
+    } for r in Ruta.objects.all()[:3]]
     return HttpResponse(json.dumps(lista_rutas), content_type='text/plain')
