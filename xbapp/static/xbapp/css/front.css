@@ -13,7 +13,9 @@
  font-family: 'OpenSans-Bold';
  src: url('../fonts/OpenSans-Bold.ttf');
 }
-
+body{
+	font-family: 'Open Sans',arial, sans-serif;
+}
 .bold{
 	font-family: OpenSans-Bold;
 }
