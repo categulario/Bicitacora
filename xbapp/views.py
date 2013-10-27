@@ -114,10 +114,11 @@ def estadisticas(request):
 
     edades = [{
         'rango': '%d-%d'%(i, i+10),
-        'cantidad': 'Ciclista.objects.raw()'
+        'cantidad': Ciclista.objects.raw()
     } for i in [j*10 for j in xrange(10)]]
 
-    pprint(edades)
+    if settings.DEBUG:
+        pprint(edades)
 
     data = {
         'nrutas': Ruta.objects.count(),
