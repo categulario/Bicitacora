@@ -2,12 +2,19 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+import re
 
 MODELO_USUARIO = get_user_model()
 
 def valida_ruta(ruta_dict):
-    if 'hora_inicio' in ruta_dict and 'hora_fin' in ruta_dict and 'puntos' in ruta_dict:
-        if type(ruta_dict['puntos'])==list:
+    if  'hora_inicio' in ruta_dict and \
+        'hora_fin' in ruta_dict and \
+        'puntos' in ruta_dict and \
+        'longitud' in ruta_dict and \
+        'desplazamiento' in ruta_dict and \
+        re.match('\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', ruta_dict['hora_inicio']) and \
+        re.match('\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', ruta_dict['hora_fin']):
+        if type(ruta_dict['puntos'])==list and type(ruta_dict['longitud'])==float and type(ruta_dict['desplazamiento'])==float:
             for punto in ruta_dict['puntos']:
                 if 'latitud' in punto and 'longitud' in punto and 'altitud' in punto:
                     if type(punto['latitud']) != float or type(punto['longitud']) != float or type(punto['altitud']) != int:

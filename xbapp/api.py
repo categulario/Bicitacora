@@ -89,6 +89,10 @@ def registra_ruta(request):
                 try:
                     valida_ruta(ruta_dict)
                     # Si pasa la validación
+                    result = {
+                        'error': '',
+                        'msg': 'ok'
+                    }
                 except ValidationError, ve:
                     print ve.args
                     result = {
