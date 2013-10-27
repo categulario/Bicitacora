@@ -14,15 +14,26 @@
     				<span class="sr-only">{{ nhombres }} % hombres </span>
   				</div>
   				<div class="progress-bar progress-bar-success" style="width: {{ nmujeres }}%">
-    				<span class="sr-only">{{ nmujeres }} % mujeres/span>
+    				<span class="sr-only">{{ nmujeres }} % mujeres</span>
   				</div>
 			</div>
 		</div>
 	</div>
-	<h2>Edad media</h2>
 	<p class="lead">{{ edad_media }} años</p>
 	<h2>Edades por rango</h2>
 	{% for edad in edades %}
-		<p>{{ edad.rango }}: {{ edad.cantidad }}</p>
+			<div class="row">
+				<div class="col-md-4">
+					{{ edad.rango }}
+				</div>
+
+				<div class="col-md-8">
+					<div class="progress">
+  						<div class="progress-bar progress-bar-primary" style="width: {{ edad.porcentaje }}%">
+    						<span class="sr-only">{{ nhombres }} % hombres </span>
+  						</div>
+					</div>
+				</div>
+			</div>
 	{% endfor %}
 {% endblock %}
