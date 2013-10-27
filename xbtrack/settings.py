@@ -173,3 +173,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     'sekizai.context_processors.sekizai',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'mSdcfeG012'
+EMAIL_HOST_USER = 'a.wonderful.code@gmail.com'
+EMAIL_PORT = 587
+EMAIL_SUBJECT_PREFIX = '[Bicitacora] '
+EMAIL_USE_TLS = True

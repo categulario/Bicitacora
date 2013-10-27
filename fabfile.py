@@ -108,5 +108,6 @@ def syncdb():
 def deploy():
     pull()
     reqs()
+    migrate()
     static()
     server_restart()
