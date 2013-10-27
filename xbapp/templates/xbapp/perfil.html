@@ -1,7 +1,7 @@
 {% extends 'xbapp/template.html' %}
 {% load sekizai_tags staticfiles bootstrap_tags %}
 
-{% block subtitulo %}Tu perfil <em>{{ user.ciclista }}</em>{% endblock %}
+{% block subtitulo %}<em>{{ user.ciclista }}</em>{% endblock %}
 
 {% block contenido %}
 	{% addtoblock 'js' %}
