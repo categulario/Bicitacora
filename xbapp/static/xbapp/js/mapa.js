@@ -115,8 +115,8 @@ function getToken () {
 }
 
 function guardarLugar (punto) {
-    $.ajax({
-    data: {ruta: creaLugarJSON(), token: token}
+  $.ajax({
+    data: {ruta: creaLugarJSON(), token: token},
     dataType: 'json',
     type: 'post',
     url: '',
@@ -128,7 +128,7 @@ function guardarLugar (punto) {
 
 function guardarRuta () {
   $.ajax({
-    data: {ruta: creaRutaJSON(), token: token}
+    data: {ruta: creaRutaJSON(), token: token},
     dataType: 'json',
     type: 'post',
     url: '',
