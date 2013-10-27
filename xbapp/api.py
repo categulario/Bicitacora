@@ -8,6 +8,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 import json
 
@@ -154,7 +155,7 @@ def registra_lugar(request):
                     )
                     nuevo_lugar.save()
                     result = {
-                        'error': '',
+                        'error': 0,
                         'msg': 'ok'
                     }
                 except ValidationError, ve:
@@ -172,4 +173,13 @@ def registra_lugar(request):
             'error': 1,
             'msg': 'invalid_data'
         }
+    return HttpResponse(json.dumps(result), content_type='text/plain')
+
+@require_GET
+@login_required
+def obtener_token(request):
+    result = {
+        'token': request.user.ciclista.token,
+        'error': 0
+    }
     return HttpResponse(json.dumps(result), content_type='text/plain')
