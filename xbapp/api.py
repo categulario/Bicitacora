@@ -122,7 +122,7 @@ def registra_ruta(request):
                         )
                         nuevo_punto.save()
                     result = {
-                        'error': '',
+                        'error': 0,
                         'msg': 'ok'
                     }
                 except ValidationError, ve:

@@ -43,3 +43,10 @@ def captura_lugar(request):
         'formulario': LugarForm()
     }
     return render_to_response('xbapp/captura_lugar.html', data, RequestContext(request))
+
+@login_required
+def perfil(request):
+    data = {
+
+    }
+    return render_to_response('xbapp/perfil.html', data, RequestContext(request))

@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/bootstrap.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/bootstrap-glyphicons.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/toastr.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/front.css' %}">
+		<link rel="stylesheet/less" type="text/css" href="{% static 'xbapp/less/front.less' %}" />
 		{% render_block "css" %}
 		<script type="text/javascript" language="javascript" src="{% static 'xbapp/js/jquery-1.10.2.min.js' %}"></script>
 	</head>
@@ -30,9 +30,18 @@
 				</div>
 				<div class="col-md-9 menu">
 					<ul class="navi">
-						<li>Proyecto</li>
-						<li>Estadísticas</li>
-						<li>Contacto</li>
+						<li>
+							<a href="/">Inicio</a>
+						</li>
+						<li>
+							<a href="">Proyecto</a>
+						</li>
+						<li>
+							<a href="">Estadísticas</a>
+						</li>
+						<li>
+							<a href="">Contacto</a>
+						</li>
 					</ul>
 				</div>
 				<div class="col-md-9">
@@ -61,8 +70,9 @@
 								<input class="bigboton" type="submit" value="Participar">
 							</form>
 						{% else %}
-							Hola <strong>{{ request.user.ciclista }}</strong><br>
-							<a href="{% url 'xbapp.views.logout' %}">salir</a>
+							<strong>{{ request.user.ciclista }}</strong><br>
+							<strong><a href="{% url 'xbapp.views.perfil' %}">perfil</a></strong><br>
+							<strong><a href="{% url 'xbapp.views.logout' %}">salir</a></strong>
 						{% endif %}
 					</div>
 					<div class="parraf">Ayudanos a recolectar datos sobre el uso de la bicicleta</div>

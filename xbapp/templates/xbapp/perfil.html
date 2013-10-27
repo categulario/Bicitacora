@@ -1,0 +1,14 @@
+{% extends 'xbapp/template.html' %}
+{% load sekizai_tags staticfiles %}
+
+{% block contenido %}
+	{% addtoblock 'css' %}
+		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/mapa.css' %}">
+	{% endaddtoblock %}
+
+	{% addtoblock 'js' %}
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
+		<script src="{% static 'xbapp/js/mapa.js' %}"></script>
+	{% endaddtoblock %}
+	holi
+{% endblock %}

@@ -5,6 +5,7 @@ urlpatterns = patterns('xbapp.views',
     url(r'^$', 'inicio'),
     url(r'^login$', 'login'),
     url(r'^logout$', 'logout'),
+    url(r'^perfil$', 'perfil'),
     url(r'^capturas/lugar$', 'captura_lugar'),
 )
 
