@@ -45,6 +45,9 @@ class TipoLugar(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'tipos de lugar'
+
 class Lugar(models.Model):
     """Un punto importante para un ciclista, como un taller"""
     nombre              = models.CharField(max_length=70, blank=True)
@@ -58,12 +61,18 @@ class Lugar(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'lugares'
+
 class TipoSuceso(models.Model):
     """ayuda a clasificar sucesos en la actividad vial del ciclista"""
     nombre              = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'tipos de suceso'
 
 class Suceso(models.Model):
     """Un suceso vial reportado por un ciclista o peatón con la aplicación"""
