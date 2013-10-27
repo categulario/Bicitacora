@@ -8,11 +8,26 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from functools import wraps
 import json
 
 MODELO_USUARIO = get_user_model()
+
+def requiere_login(vista):
+    """forza una vista a recibir el valor indicado por post"""
+    @wraps(vista)
+    def wrapper(*args, **kwds):
+        request = args[0]
+        if request.user.is_authenticated():
+            return vista(*args, **kwds)
+        else:
+            result = {
+                'error': 2,
+                'msg': 'invalid_user'
+            }
+            return HttpResponse(json.dumps(result), content_type='text/plain')
+    return wrapper
 
 def inicio(request):
     return HttpResponse('Hola, humano', content_type="text/plain")
@@ -176,7 +191,7 @@ def registra_lugar(request):
     return HttpResponse(json.dumps(result), content_type='text/plain')
 
 @require_GET
-@login_required
+@requiere_login
 def obtener_token(request):
     result = {
         'token': request.user.ciclista.token,
