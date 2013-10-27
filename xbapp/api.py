@@ -127,3 +127,58 @@ def registra_ruta(request):
             'msg': 'invalid_data'
         }
     return HttpResponse(json.dumps(result), content_type='text/plain')
+
+@csrf_exempt
+@require_POST
+def registra_lugar(request):
+    if 'token' in request.POST and 'lugar' in request.POST:
+        try:
+            ciclista = Ciclista.objects.get(token=request.POST.get('token', ''))
+            try:
+                lugar_dict = json.loads(request.POST.get('lugar', '{}'))
+            except ValueError:
+                result = {
+                    'error': 1,
+                    'msg': 'formato_invalido_no_json'
+                }
+            else:
+                try:
+                    valida_lugar(lugar_dict)
+                    # Si pasa la validación, guardamos la lugar
+                    nueva_lugar = lugar(
+                        hora_inicio     = lugar_dict['hora_inicio'],
+                        hora_fin        = lugar_dict['hora_fin'],
+                        ciclista        = ciclista,
+                        longitud        = lugar_dict['longitud'],
+                        desplazamiento  = lugar_dict['desplazamiento'],
+                    )
+                    nueva_lugar.save()
+                    for punto in lugar_dict['puntos']:
+                        nuevo_punto = Punto(
+                            lugar        = nueva_ruta,
+                            latitud     = punto['latitud'],
+                            longitud    = punto['longitud'],
+                            altitud     = punto['altitud'],
+                        )
+                        nuevo_punto.save()
+                    result = {
+                        'error': '',
+                        'msg': 'ok'
+                    }
+                except ValidationError, ve:
+                    print ve.args
+                    result = {
+                        'error': 1,
+                        'msg': str(ve)
+                    }
+        except MODELO_USUARIO.DoesNotExist:
+            result = {
+                'error': 2,
+                'msg': 'invalid_user'
+            }
+    else:
+        result = {
+            'error': 1,
+            'msg': 'invalid_data'
+        }
+    return HttpResponse(json.dumps(result), content_type='text/plain')
