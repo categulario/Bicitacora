@@ -1,7 +1,7 @@
 $(document).on("ready",cargar(inicializar));
 
 function inicializar (posicion) {
-
+	getRuta();
 }
 
 function getRuta () {
