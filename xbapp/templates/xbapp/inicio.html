@@ -1,7 +1,47 @@
 {% extends 'xbapp/template.html' %}
+{% load sekizai_tags staticfiles %}
 
 {% block contenido %}
-	<div class="container">
-		<h1>Hola, humano</h1>
-	</div>
+	{% addtoblock 'css' %}
+		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/principal.css' %}">
+	{% endaddtoblock %}
+	
+	{% addtoblock 'js' %}
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
+		<script src="{% static 'xbapp/js/mapa.js' %}"></script>
+	{% endaddtoblock %}
+	<header>
+		<h1>Bicitacora</h1>
+	</header>
+	<nav>
+		<ul>
+			<li>Proyectos</li>
+			<li>Estadísticas</li>
+			<li>Contactanos</li>
+		</ul>
+	</nav>
+	<section id="principal">
+		<div class="row">
+	        <div class="col-lg-8">
+				<div id="map_canvas"></div>
+			</div>
+			<div class="col-lg-4">
+				<form action="" method="post">
+					{% csrf_token %}
+					<p>
+						<label for="correo">Correo:</label>
+    					<input id="correo" type="email" name="correo" maxlength="50" />
+    				</p>
+					<p>
+						<label for="password">Password:</label>
+						<input type="password" name="password" id="password" />
+					</p>
+    				<p>
+    					<input type="submit" val="Enviame, te amo" />
+    				</p>
+				</form>
+			</div>
+		</div>
+	</section>
+
 {% endblock %}
