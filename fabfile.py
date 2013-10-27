@@ -131,7 +131,17 @@ def tsapiruta():
                 "latitud"   : 21.8989,
                 "longitud"  : 19.8989,
                 "altitud"   : 1420,
-            }
+            },
+            {
+                "latitud"   : 22.8989,
+                "longitud"  : 19.8989,
+                "altitud"   : 1420,
+            },
+            {
+                "latitud"   : 23.8989,
+                "longitud"  : 19.8989,
+                "altitud"   : 1420,
+            },
         ],
         "longitud"          : 12.3,
         "desplazamiento"    : 8.3

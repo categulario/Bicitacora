@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from xbapp.forms import APIRegistroForm
 from xbapp.forms import APILoginForm
 from xbapp.forms import valida_ruta
-from xbapp.models import Ruta, Ciclista
+from xbapp.models import Ruta, Ciclista, Punto
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
@@ -98,6 +98,14 @@ def registra_ruta(request):
                         desplazamiento  = ruta_dict['desplazamiento'],
                     )
                     nueva_ruta.save()
+                    for punto in ruta_dict['puntos']:
+                        nuevo_punto = Punto(
+                            ruta        = nueva_ruta,
+                            latitud     = punto['latitud'],
+                            longitud    = punto['longitud'],
+                            altitud     = punto['altitud'],
+                        )
+                        nuevo_punto.save()
                     result = {
                         'error': '',
                         'msg': 'ok'

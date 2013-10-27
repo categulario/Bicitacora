@@ -39,6 +39,9 @@ class Punto(models.Model):
     altitud             = models.IntegerField()
     ruta                = models.ForeignKey(Ruta)
 
+    def __unicode__(self):
+        return u"(%fº, %fº) a %d msnm"%(self.latitud, self.longitud, self.altitud)
+
 class TipoLugar(models.Model):
     """Sirve para clasificar los lugares que encuentra el ciclista, como
     talleres o biciestacionamientos"""
