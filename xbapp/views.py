@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from xbapp.forms import LugarForm, APILoginForm, CiclistaForm
-from xbapp.models import existe_usuario
+from xbapp.models import existe_usuario, Ruta, Ciclista
 from django.contrib.auth import get_user_model
 
 MODELO_USUARIO = get_user_model()
@@ -98,8 +98,14 @@ def proyecto(request):
     return render_to_response('xbapp/proyecto.html', data, RequestContext(request))
 
 def estadisticas(request):
+    ciclistas = Ciclista.objects.all()
+    total = ciclistas.count()
+    hombres = float(ciclistas.filter(sexo='M').count())/total*100
+    mujeres = 100-hombres
     data = {
-
+        'nrutas': Ruta.objects.count(),
+        'nhombres': '%.2f'%hombres,
+        'nmujeres': '%.2f'%mujeres,
     }
     return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
 

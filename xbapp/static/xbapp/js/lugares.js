@@ -8,7 +8,7 @@ function agrega_punto(posicion){
  		punto = new google.maps.Marker({
         position: posicion,
         map: map,
-        icon: "/static/xbapp/images/taller.png"
+        icon: "http://bicitacorastatic.developingo.webfactional.com/static/xbapp/images/taller.png"
         });
  	else
  		punto.setPosition(posicion);
