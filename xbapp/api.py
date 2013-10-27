@@ -14,7 +14,7 @@ from functools import wraps
 import logging
 import json
 
-logging.basicConfig(filename='%s/example.log'%settings.PROJECT_PATH, level=logging.DEBUG)
+logging.basicConfig(filename='%s/debug.log'%settings.PROJECT_PATH, level=logging.DEBUG)
 
 MODELO_USUARIO = get_user_model()
 
@@ -199,6 +199,7 @@ def registra_lugar(request):
 @require_GET
 @requiere_login
 def obtener_token(request):
+    logging.debug(request.user.ciclista.token)
     result = {
         'token': request.user.ciclista.token,
         'error': 0
