@@ -9,8 +9,12 @@ from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
 from django.core.exceptions import ValidationError
+from django.conf import settings
 from functools import wraps
+import logging
 import json
+
+logging.basicConfig(filename='%s/example.log'%settings.PROJECT_PATH, level=logging.DEBUG)
 
 MODELO_USUARIO = get_user_model()
 
@@ -91,9 +95,7 @@ def login(request):
 @csrf_exempt
 @require_POST
 def registra_ruta(request):
-    f = file('milog.log', 'w') #TODO eliminar estas lineas
-    f.write(json.dumps(request.POST['ruta']))
-    f.close()
+    logging.debug(json.dumps(request.POST['ruta']))
     if 'token' in request.POST and 'ruta' in request.POST:
         try:
             ciclista = Ciclista.objects.get(token=request.POST.get('token', ''))
@@ -143,6 +145,7 @@ def registra_ruta(request):
             'error': 1,
             'msg': 'invalid_data'
         }
+    logging.debug(json.dumps(result))
     return HttpResponse(json.dumps(result), content_type='text/plain')
 
 @csrf_exempt
