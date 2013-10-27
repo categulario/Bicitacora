@@ -11,9 +11,19 @@
 			$("#add-lugar-form input, #add-lugar-form select").addClass('form-control');
 		});
 	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
+		<script src="{% static 'xbapp/js/mapa.js' %}"></script>
+		<script src="{% static 'xbapp/js/lugares.js' %}"></script>
 	{% endaddtoblock %}
-	<form id="add-lugar-form" class="form-horizontal">
-		{% csrf_token %}
-		{% form_horizontal formulario %}
-	</form>
+	<div class="row">
+		<div class="col-md-6">
+			<form id="add-lugar-form" class="form-horizontal">
+				{% csrf_token %}
+				{% form_horizontal formulario %}
+			</form>
+		</div>
+		<div class="col-md-6">
+			<div id="map_canvas"></div>
+		</div>
+	</div>
 {% endblock %}
