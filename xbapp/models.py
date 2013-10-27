@@ -19,7 +19,7 @@ class Ciclista(models.Model):
     fecha_nacimiento    = models.DateField(blank=True, null=True)
     fecha_registro      = models.DateField(auto_now_add=True)
     usuario             = models.OneToOneField(get_user_model())
-    token               = models.CharField(max_length=36, default=crea_uid)
+    token               = models.CharField(max_length=36, default=crea_uid, unique=True)
 
     def __unicode__(self):
         return self.nombre

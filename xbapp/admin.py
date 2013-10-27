@@ -2,7 +2,10 @@
 from django.contrib import admin
 from xbapp.models import *
 
-admin.site.register(Ciclista)
+class CiclistaAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'token']
+
+admin.site.register(Ciclista, CiclistaAdmin)
 admin.site.register(Ruta)
 admin.site.register(Punto)
 admin.site.register(TipoLugar)
