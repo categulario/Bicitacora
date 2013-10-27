@@ -12,35 +12,11 @@ function agrega_punto(posicion){
         });
  	else
  		punto.setPosition(posicion);
+    $('#id_latitud').val(posicion.lat());
+    $('#id_longitud').val(posicion.lng());
     buscaElevacion(posicion);
 }
 
-function creaLugarJSON () {
-  posicion = punto.getPosition();
-  var lugar = {};
-  lugar['nombre'] = $('#id_nombre').val();
-  lugar['direccion'] = $('#id_direccion').val();
-  lugar["latitud"] = posicion.lat();
-  lugar["longitud"]= posicion.lng();
-  lugar["altitud"] = elevacion;
-  lugar["tipo"] = $('#id_tipo').val();
-  return lugar;
-}
-
-function guardarLugar (punto) {
-  $.ajax({
-    data: {ruta: creaLugarJSON(), token: token},
-    dataType: 'json',
-    type: 'post',
-    url: '',
-    success: function(json){
-     toastr.success('El lugar ha sido guardado', 'Genial :D');
-    },
-    error: function(){
-      toastr.error('Ha ocurrio un error', 'Oh, no!')
-    }
-  });
-}
 
 function buscaElevacion (punto) {
   elevator = new google.maps.ElevationService();
@@ -50,11 +26,11 @@ function buscaElevacion (punto) {
 function guardaElevacion (results,status) {
   if (status == google.maps.ElevationStatus.OK) {
       if (results[0]) {
-        elevacion = results[0].elevation;
+        $('#id_altitud').val(results[0].elevation);
       }else{
-        elevacion = 0;
+        $('#id_altitud').val("");
       } 
     }else{
-      elevacion = 0;
+      $('#id_altitud').val("");
     }
 }
