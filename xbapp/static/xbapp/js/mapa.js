@@ -121,7 +121,10 @@ function guardarLugar (punto) {
     type: 'post',
     url: '',
     success: function(json){
-     console.log(json);
+     toastr.success('El lugar ha sido guardado', 'Genial :D');
+    },
+    error: function(){
+      toastr.error('Ha ocurrio un error', 'Oh, no!')
     }
   });
 }
@@ -133,7 +136,9 @@ function guardarRuta () {
     type: 'post',
     url: '',
     success: function(json){
-     console.log(json);
+      toastr.success('La ruta ha sido guardada', 'Genial :D');
+    },error: function(){
+      toastr.error('Ha ocurrio un error u.u', 'Oh, no!')
     }
   });
 }

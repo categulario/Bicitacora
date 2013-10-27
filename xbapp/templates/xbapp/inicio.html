@@ -4,78 +4,15 @@
 {% block contenido %}
 	{% addtoblock 'css' %}
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/mapa.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/front.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/reset.css' %}">
 	{% endaddtoblock %}
 
 	{% addtoblock 'js' %}
 		<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
 		<script src="{% static 'xbapp/js/mapa.js' %}"></script>
 	{% endaddtoblock %}
-	<div class="header">
-		<div class="container">
-				<div class="col-md-2">
-					<img src="{% static 'xbapp/images/logobicitacoraweb.jpg' %}">
-				</div>
-				<div class="col-md-10">
-					<div class="row">
-						<div class="col-md-9"></div>
-						<div class="col-md-3">
-							<img src="{% static 'xbapp/images/ico-tw.png' %}">
-							<img src="{% static 'xbapp/images/ico-fb.png' %}">
-							<img src="{% static 'xbapp/images/ico-rss.png' %}">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-10 menu">
-					<ul class="navi">
-						<li>Proyecto</li>
-						<li>Estadísticas</li>
-						<li>Contacto</li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-					<div class="title">
-						Ayudanos a recolectar datos sobre como usas tu bicicleta
-					</div>
-				</div>
-		</div>
-	</div>
-	<div class="content">
-		<div class="container">
-			<div class="col-md-9">
-				<ul class="subnav">
-					<li>Revisa las rutas más usadas</li>
-					<li>Datos generales</li>
-				</ul>
-				<div id="map_canvas"></div>
-			</div>
-			<div class="col-md-3">
-				<div class="formulario">
-				<form action="{% url 'xbapp.views.login' %}" method="post">
-					{% csrf_token %}
-					<div class="bold subtitle">Registrate</div>
-					<label for="correo">Correo:</label>
-					<input id="correo" type="text" name="correo">
-					<label for="password">Contraseña:</label>
-					<input id="password" type="password" name="pass">
-					<input class="bigboton" type="submit" value="Entrar">
-				</form>
-				</div>
-				<div class="parraf">Ayudanos a recolectar datos sobre el uso de la bicicleta</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<div class="container">
-			<ul class="navi">
-				<li>Proyecto</li>
-			    <li>Estadísticas</li>
-				<li>Contacto</li>
-			</ul>
-		</div>
-	</div>
-
-
+	<ul class="subnav">
+		<li>Revisa las rutas más usadas</li>
+		<li>Datos generales</li>
+	</ul>
+	<div id="map_canvas"></div>
 {% endblock %}
