@@ -19,4 +19,5 @@ urlpatterns += patterns('xbapp.api',
     url(r'^api/token$', 'obtener_token'),
     url(r'^api/w/ruta$', 'registra_ruta'),
     url(r'^api/w/lugar$', 'registra_lugar'),
+    url(r'^api/r/rutas$', 'rutas'),
 )
