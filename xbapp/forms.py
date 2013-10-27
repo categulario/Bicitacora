@@ -74,6 +74,7 @@ class LugarForm(forms.ModelForm):
         exclude = ('registrante',)
 
 class CiclistaForm(forms.ModelForm):
+    nombre              = forms.CharField(required=True)
     class Meta:
         model = Ciclista
         exclude = ('token', 'usuario', 'score')

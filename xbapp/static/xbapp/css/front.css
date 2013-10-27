@@ -148,3 +148,7 @@ a.bigboton {
 .logo{
 	padding-left:20px;
 }
+.errorlist {
+	color: red;
+	font-size: 12px;
+}

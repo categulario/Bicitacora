@@ -37,11 +37,14 @@ def login(request):
                 # lo procedemos a inscribir
                 formulario = APILoginForm(request.POST)
                 if formulario.is_valid():
-                    nuevo_usuario = MODELO_USUARIO(username=request.POST.get('correo'), email=request.POST.get('correo'))
-                    nuevo_usuario.set_password(request.POST.get('password'))
+                    nuevo_usuario = MODELO_USUARIO(username=username, email=username)
+                    nuevo_usuario.set_password(password)
                     nuevo_usuario.save()
+                    user = auth.authenticate(username=username, password=password)
+                    auth.login(request, user)
                     messages.success(request, 'Te has registrado!!')
-                    return HttpResponseRedirect('/')
+                    messages.info(request, 'Termina de llenar tu perfil')
+                    return HttpResponseRedirect('/perfil')
                 else:
                     messages.warning(request, 'datos de registro inválidos')
                     return HttpResponseRedirect('/')
