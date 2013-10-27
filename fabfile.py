@@ -157,5 +157,25 @@ def tsapiruta():
     print res.read()
 
 @task
+def tsapilugar():
+    lugar = {
+        "nombre"    : "YoloBicis",
+        "direccion" : "2º priv. bis de josé mancisidor #157-b",
+        "latitud"   : 93.2323,
+        "longitud"  : 23.4343,
+        "altitud"   : 1420,
+        "tipo"      : "biciestacionamiento",  #puede ser también "taller" o "gasolinera"
+    }
+    data = urllib.urlencode({
+        'token': '133da770-3e97-11e3-82a5-701a0416ad73',
+        'lugar': json.dumps(lugar)
+    })
+    res = urllib2.urlopen(
+        'http://ab-dev:8000/api/w/lugar',
+        data
+    )
+    print res.read()
+
+@task
 def test():
     pass

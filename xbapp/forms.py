@@ -6,6 +6,15 @@ import re
 
 MODELO_USUARIO = get_user_model()
 
+def likethis(diccionario, referencia):
+    """Compara 'diccionario' con 'referencia' (otro diccionario) en términos de llaves
+    y tipos de datos de valores, recursivamente"""
+    for llave, valor in referencia.iteritems():
+        if not diccionario.has_key(llave):
+            raise ValidationError('falta_llave')
+        if type(diccionario[llave]) != type(valor) and not (type(diccionario[llave])==unicode and type(valor)==str):
+            raise ValidationError('tipo_valor')
+
 def valida_ruta(ruta_dict):
     if  'hora_inicio' in ruta_dict and \
         'hora_fin' in ruta_dict and \
@@ -24,6 +33,16 @@ def valida_ruta(ruta_dict):
                 else:
                     raise ValidationError('formato de ruta invalido (valor faltante)')
     raise ValidationError('formato de ruta invalido (cabecera faltante)')
+
+def valida_lugar(lugar_dict):
+    return likethis(lugar_dict, {
+        "nombre"    : "Rojas bikes",
+        "direccion" : "2º priv. bis de josé mancisidor #157-b",
+        "latitud"   : 93.2323,
+        "longitud"  : 23.4343,
+        "altitud"   : 1420,
+        "tipo"      : "biciestacionamiento",  #puede ser también "taller" o "gasolinera"
+    })
 
 def valida_correo(correo):
     try:

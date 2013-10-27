@@ -45,11 +45,17 @@ class Punto(models.Model):
 class TipoLugar(models.Model):
     """Sirve para clasificar los lugares que encuentra el ciclista, como
     talleres o biciestacionamientos"""
-    nombre              = models.CharField(max_length=50)
-    codigo              = models.CharField(max_length=50, default='', unique=True)
+    nombre              = models.CharField(max_length=50, blank=True)
+    codigo              = models.CharField(max_length=50, default='', unique=True, blank=True)
 
     def save(self):
-        self.codigo = self.nombre.lower().replace(' ', '_')
+        self.nombre = self.nombre.lower()
+        self.codigo = self.codigo.lower()
+        if self.nombre and not self.codigo:
+            self.codigo = self.nombre.replace(' ', '_')
+        if self.codigo and not self.nombre:
+            self.nombre = self.codigo.replace('_', ' ')
+        self.nombre = self.nombre.capitalize()
         super(TipoLugar, self).save()
 
     def __unicode__(self):
