@@ -31,22 +31,25 @@
 				<div class="col-md-9 menu">
 					<ul class="navi">
 						<li>
-							<a href="/">Inicio</a>
+							<a href="{% url 'xbapp.views.inicio' %}">Inicio</a>
 						</li>
 						<li>
-							<a href="">Proyecto</a>
+							<a href="{% url 'xbapp.views.proyecto' %}">Proyecto</a>
 						</li>
 						<li>
-							<a href="">Estadísticas</a>
+							<a href="{% url 'xbapp.views.estadisticas' %}">Estadísticas</a>
 						</li>
 						<li>
-							<a href="">Contacto</a>
+							<a href="{% url 'xbapp.views.captura' %}">Captura</a>
+						</li>
+						<li>
+							<a href="{% url 'xbapp.views.contacto' %}">Contacto</a>
 						</li>
 					</ul>
 				</div>
 				<div class="col-md-9">
 					<div class="title">
-						Ayudanos a recolectar datos sobre como usas tu bicicleta
+						{% block subtitulo %}Ayudanos a recolectar datos sobre como usas tu bicicleta{% endblock %}
 					</div>
 				</div>
 			</div>

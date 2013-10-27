@@ -6,7 +6,10 @@ urlpatterns = patterns('xbapp.views',
     url(r'^login$', 'login'),
     url(r'^logout$', 'logout'),
     url(r'^perfil$', 'perfil'),
-    url(r'^capturas/lugar$', 'captura_lugar'),
+    url(r'^captura$', 'captura'),
+    url(r'^proyecto$', 'proyecto'),
+    url(r'^estadisticas$', 'estadisticas'),
+    url(r'^contacto$', 'contacto'),
 )
 
 urlpatterns += patterns('xbapp.api',

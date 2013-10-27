@@ -53,7 +53,7 @@ def logout(request):
     return HttpResponseRedirect('/')
 
 @login_required
-def captura_lugar(request):
+def captura(request):
     data = {
         'formulario': LugarForm()
     }
@@ -61,6 +61,25 @@ def captura_lugar(request):
 
 @login_required
 def perfil(request):
+    data = {
+
+    }
+    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+
+@login_required
+def proyecto(request):
+    data = {
+
+    }
+    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+@login_required
+def estadisticas(request):
+    data = {
+
+    }
+    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+@login_required
+def contacto(request):
     data = {
 
     }
