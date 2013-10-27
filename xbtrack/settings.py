@@ -19,7 +19,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'xbtrack',
         'USER': 'xbtrack',
-        'PASSWORD': 'xbtrack',
+        'PASSWORD': 'swUXNC8BM25yGvBW',
         'HOST': '',
         'PORT': '',
     }

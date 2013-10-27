@@ -55,11 +55,12 @@ def pull():
 @task
 def server_start():
     """Inicia el servidor"""
-    run("%(venv_dir)s/bin/gunicorn -c %(config_file)s %(wsgimodule)s:application"%{
-        'venv_dir': VENV_DIR,
-        'config_file': GUNICORN_CONFIG,
-        'wsgimodule': WSGI_MODULE
-    })
+    with cd(DJANGO_APP_ROOT):
+        run("%(venv_dir)s/bin/gunicorn -c %(config_file)s %(wsgimodule)s:application"%{
+            'venv_dir': VENV_DIR,
+            'config_file': GUNICORN_CONFIG,
+            'wsgimodule': WSGI_MODULE
+        })
 
 @task
 def server_restart():
@@ -91,6 +92,19 @@ def static():
             run_venv("./manage.py collectstatic -v 0 --noinput --clear")
     run("chmod -R ugo+r %s" % STATIC_ROOT)
 
+@task
+def errors(n=10):
+    with cd(DJANGO_APP_ROOT):
+        run("tail -n %d error.log"%int(n))
+
+@task
+def syncdb():
+    with virtualenv(VENV_DIR):
+        with cd(DJANGO_APP_ROOT):
+            run_venv("./manage.py syncdb --all")
+            run_venv("./manage.py migrate --fake")
+
+@task
 def deploy():
     pull()
     reqs()
