@@ -11,5 +11,19 @@ def inicio(request):
 
 @require_POST
 def login(request):
-    messages.success(request, 'holi')
+    """Procesa el login"""
+    if not request.user.is_authenticated():
+        username = request.POST.get('correo')
+        password = request.POST.get('pass')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                messages.success(request, '¡Bienvenido!')
+            else:
+                messages.error(request, 'Lo sentimos, esta cuenta está desactivada')
+        else:
+            messages.error(request, 'Nadie registrado con ese correo, verifique por favor')
+    else:
+        messages.warning(request, 'Ya tienes una sesión')
     return HttpResponseRedirect('/')

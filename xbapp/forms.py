@@ -2,6 +2,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from xbapp.models import Lugar
 import re
 
 MODELO_USUARIO = get_user_model()
@@ -64,3 +65,7 @@ class APIRegistroForm(forms.Form):
 class APILoginForm(forms.Form):
     correo              = forms.EmailField()
     password            = forms.CharField(min_length=6)
+
+class LugarForm(forms.ModelForm):
+    class Meta:
+        model = Lugar
