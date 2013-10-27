@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from uuid import uuid1
+import datetime
 
 MODELO_USUARIO = get_user_model()
 
@@ -32,6 +33,9 @@ class Ciclista(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+    def edad(self):
+        return (datetime.date.today()-self.fecha_nacimiento).days/365 if self.fecha_nacimiento else 0
 
 class Ruta(models.Model):
     """Una ruta recorrida y marcada por un usuario"""

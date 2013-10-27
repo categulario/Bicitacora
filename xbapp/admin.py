@@ -3,7 +3,7 @@ from django.contrib import admin
 from xbapp.models import *
 
 class CiclistaAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'token']
+    list_display = ['nombre', 'token', 'edad']
 
 class TipoLugarAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'codigo']

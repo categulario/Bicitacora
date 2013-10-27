@@ -9,6 +9,7 @@ from django.contrib import auth
 from xbapp.forms import LugarForm, APILoginForm, CiclistaForm
 from xbapp.models import existe_usuario, Ruta, Ciclista
 from django.contrib.auth import get_user_model
+import datetime
 
 MODELO_USUARIO = get_user_model()
 
@@ -102,10 +103,16 @@ def estadisticas(request):
     total = ciclistas.count()
     hombres = float(ciclistas.filter(sexo='M').count())/total*100
     mujeres = 100-hombres
+
+    hoy = datetime.date.today()
+
+    edad_media = sum([c.edad() for c in ciclistas if c.fecha_nacimiento])/(ciclistas.filter(fecha_nacimiento__isnull=False).count())
+
     data = {
         'nrutas': Ruta.objects.count(),
         'nhombres': '%.2f'%hombres,
         'nmujeres': '%.2f'%mujeres,
+        'edad_media': edad_media
     }
     return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
 
