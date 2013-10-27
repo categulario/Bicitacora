@@ -64,7 +64,17 @@ def captura(request):
     data = {
         'formulario': LugarForm()
     }
-    return render_to_response('xbapp/captura_lugar.html', data, RequestContext(request))
+    if request.method == 'POST':
+        formulario = LugarForm(request.POST)
+        if formulario.is_valid():
+            lugar = formulario.save(commit=False)
+            lugar.registrante = request.user.ciclista
+            lugar.save()
+            messages.success(request, 'Gracias!! dato guardado')
+        else:
+            messages.error(request, 'Hay errores con los campos del formulario')
+            data['formulario'] = formulario
+    return render_to_response('xbapp/captura.html', data, RequestContext(request))
 
 @login_required
 def perfil(request):

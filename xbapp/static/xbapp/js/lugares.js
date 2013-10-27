@@ -6,7 +6,7 @@ var elevacion = 0;
 function agrega_punto(posicion){
 	if ( punto == null)
  		punto = new google.maps.Marker({
-        position: posicion, 
+        position: posicion,
         map: map,
         icon: "/static/xbapp/images/taller.png"
         });
@@ -26,10 +26,10 @@ function buscaElevacion (punto) {
 function guardaElevacion (results,status) {
   if (status == google.maps.ElevationStatus.OK) {
       if (results[0]) {
-        $('#id_altitud').val(results[0].elevation);
+        $('#id_altitud').val(parseInt(results[0].elevation));
       }else{
         $('#id_altitud').val("");
-      } 
+      }
     }else{
       $('#id_altitud').val("");
     }

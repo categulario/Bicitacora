@@ -182,3 +182,5 @@ EMAIL_HOST_USER = 'a.wonderful.code@gmail.com'
 EMAIL_PORT = 587
 EMAIL_SUBJECT_PREFIX = '[Bicitacora] '
 EMAIL_USE_TLS = True
+
+LOGIN_URL = '/'

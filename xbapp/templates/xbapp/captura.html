@@ -16,10 +16,22 @@
 		<script src="{% static 'xbapp/js/lugares.js' %}"></script>
 	{% endaddtoblock %}
 	<div class="row">
+		<div class="col-md-12">
+			<p class="lead">
+				Selecciona en el mapa la ubicación del lugar que quieres registrar
+			</p>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-6">
-			<form id="add-lugar-form" class="form-horizontal">
+			<form id="add-lugar-form" class="form-horizontal" method="post">
 				{% csrf_token %}
 				{% form_horizontal formulario %}
+				<div class="form-group">
+					<div class="col-md-10 col-md-offset-2">
+						<input type="submit" value="Guardar" class="btn btn-success">
+					</div>
+				</div>
 			</form>
 		</div>
 		<div class="col-md-6">
