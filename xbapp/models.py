@@ -84,7 +84,7 @@ class Lugar(models.Model):
     registrante         = models.ForeignKey(Ciclista)
 
     def __unicode__(self):
-        return self.nombre
+        return u"%s (%s)"%(self.nombre, self.tipo)
 
     class Meta:
         verbose_name_plural = 'lugares'
