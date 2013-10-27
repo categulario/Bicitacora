@@ -1,3 +1,8 @@
 {
-	""
+	"nombre"    : "Rojas bikes",
+	"direccion" : "2º priv. bis de josé mancisidor #157-b",
+	"latitud"   : 93.2323,
+	"longitud"  : 23.4343,
+	"altitud"   : 1420,
+	"tipo"      : "biciestacionamiento",  #puede ser también "taller" o "gasolinera"
 }

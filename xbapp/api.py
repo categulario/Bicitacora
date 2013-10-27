@@ -2,8 +2,8 @@
 from django.http import HttpResponse
 from xbapp.forms import APIRegistroForm
 from xbapp.forms import APILoginForm
-from xbapp.forms import valida_ruta
-from xbapp.models import Ruta, Ciclista, Punto
+from xbapp.forms import valida_ruta, valida_lugar
+from xbapp.models import Ruta, Ciclista, Punto, Lugar, TipoLugar
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
@@ -41,7 +41,6 @@ def registro(request):
             'error': 1,
             'msg': formulario.errors
         }
-    print request.POST
     return HttpResponse(json.dumps(result), content_type='text/plain')
 
 @csrf_exempt
@@ -111,7 +110,6 @@ def registra_ruta(request):
                         'msg': 'ok'
                     }
                 except ValidationError, ve:
-                    print ve.args
                     result = {
                         'error': 1,
                         'msg': str(ve)
@@ -145,28 +143,21 @@ def registra_lugar(request):
                 try:
                     valida_lugar(lugar_dict)
                     # Si pasa la validación, guardamos la lugar
-                    nueva_lugar = lugar(
-                        hora_inicio     = lugar_dict['hora_inicio'],
-                        hora_fin        = lugar_dict['hora_fin'],
-                        ciclista        = ciclista,
-                        longitud        = lugar_dict['longitud'],
-                        desplazamiento  = lugar_dict['desplazamiento'],
+                    nuevo_lugar = Lugar(
+                            nombre    = lugar_dict['nombre'],
+                            direccion = lugar_dict['direccion'],
+                            latitud   = lugar_dict['latitud'],
+                            longitud  = lugar_dict['longitud'],
+                            altitud   = lugar_dict['altitud'],
+                            tipo      = TipoLugar.objects.get_or_create(codigo=lugar_dict['tipo'])[0],
+                            registrante = ciclista
                     )
-                    nueva_lugar.save()
-                    for punto in lugar_dict['puntos']:
-                        nuevo_punto = Punto(
-                            lugar        = nueva_ruta,
-                            latitud     = punto['latitud'],
-                            longitud    = punto['longitud'],
-                            altitud     = punto['altitud'],
-                        )
-                        nuevo_punto.save()
+                    nuevo_lugar.save()
                     result = {
                         'error': '',
                         'msg': 'ok'
                     }
                 except ValidationError, ve:
-                    print ve.args
                     result = {
                         'error': 1,
                         'msg': str(ve)
