@@ -1,8 +1,6 @@
 {% extends 'xbapp/template.html' %}
 {% load sekizai_tags staticfiles bootstrap_tags %}
 
-{% block subtitulo %}<em>{{ user.ciclista }}</em>{% endblock %}
-
 {% block contenido %}
 	{% addtoblock 'js' %}
 		<script type="text/javascript" language="javascript" src="{% static 'xbapp/js/bootstrap-datepicker.js' %}"></script>

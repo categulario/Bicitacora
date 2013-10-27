@@ -61,12 +61,12 @@ body{
 .navf li {
 	margin:0;
 	padding:10px 15px 10px 15px;
-	font-weight:bold;
-	font-size: 19px;
+	font-size: 17px;
 	float:left;
 }
 .navf li:hover {
 	color:#000;
+	cursor: pointer
 }
 .subnav {
 	list-style:none;
