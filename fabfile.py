@@ -108,7 +108,7 @@ def access_api():
 @task
 def access(n=10):
     with cd(DJANGO_APP_ROOT):
-        run("tail -n %d access.log | grep api"%int(n))
+        run("tail -n %d access.log"%int(n))
 
 @task
 def syncdb():
