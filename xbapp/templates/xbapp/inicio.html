@@ -52,7 +52,8 @@
 			</div>
 			<div class="col-md-3">
 				<div class="formulario">
-				<form >
+				<form action="{% url 'xbapp.views.login' %}" method="post">
+					{% csrf_token %}
 					<div class="bold subtitle">Registrate</div>
 					<label for="correo">Correo:</label>
 					<input id="correo" type="text" name="correo">

@@ -3,6 +3,7 @@ from django.conf.urls import patterns, url, include
 
 urlpatterns = patterns('xbapp.views',
     url(r'^$', 'inicio'),
+    url(r'^login$', 'login'),
 )
 
 urlpatterns += patterns('xbapp.api',
