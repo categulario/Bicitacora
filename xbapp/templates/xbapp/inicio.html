@@ -4,10 +4,10 @@
 {% block contenido %}
 	{% addtoblock 'css' %}
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/mapa.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/front.css' %}">	
+		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/front.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/reset.css' %}">
 	{% endaddtoblock %}
-	
+
 	{% addtoblock 'js' %}
 		<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
 		<script src="{% static 'xbapp/js/mapa.js' %}"></script>
@@ -26,7 +26,7 @@
 							<img src="{% static 'xbapp/images/ico-rss.png' %}">
 						</div>
 					</div>
-				</div>	
+				</div>
 				<div class="col-md-9 menu">
 					<ul class="navi">
 						<li>Proyecto</li>
@@ -55,13 +55,13 @@
 				<form >
 					<div class="bold subtitle">Registrate</div>
 					<label for="correo">Correo:</label>
-					<input id="correo" type="text">
+					<input id="correo" type="text" name="correo">
 					<label for="password">Contraseña:</label>
-					<input id="password" type="password">
+					<input id="password" type="password" name="password">
 					<input class="bigboton" type="submit"/ >
 				</form>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -74,6 +74,6 @@
 			</ul>
 		</div>
 	</div>
-	
+
 
 {% endblock %}
