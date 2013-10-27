@@ -115,7 +115,8 @@ def estadisticas(request):
 
     edades = [{
         'rango': '%d-%d'%(i, i+10),
-        'cantidad': cuenta_ciclistas(i, i+10)
+        'cantidad': cuenta_ciclistas(i, i+10),
+        'porcentaje': float(cuenta_ciclistas(i, i+10))/total,
     } for i in [j*10 for j in xrange(10)]]
 
     if settings.DEBUG:
