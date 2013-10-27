@@ -105,6 +105,12 @@ def syncdb():
             run_venv("./manage.py migrate --fake")
 
 @task
+def migrate():
+    with virtualenv(VENV_DIR):
+        with cd(DJANGO_APP_ROOT):
+            run_venv("./manage.py migrate")
+
+@task
 def deploy():
     pull()
     reqs()
