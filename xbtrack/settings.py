@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'south',
     'sekizai',
     'xbapp',
+    'bootstrapy',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

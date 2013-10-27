@@ -4,6 +4,7 @@ from django.conf.urls import patterns, url, include
 urlpatterns = patterns('xbapp.views',
     url(r'^$', 'inicio'),
     url(r'^login$', 'login'),
+    url(r'^capturas/lugar$', 'captura_lugar'),
 )
 
 urlpatterns += patterns('xbapp.api',

@@ -69,3 +69,4 @@ class APILoginForm(forms.Form):
 class LugarForm(forms.ModelForm):
     class Meta:
         model = Lugar
+        exclude = ('registrante',)

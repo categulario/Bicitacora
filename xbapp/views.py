@@ -4,6 +4,8 @@ from django.template import RequestContext
 from django.views.decorators.http import require_GET, require_POST
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from xbapp.forms import LugarForm
 
 def inicio(request):
     data = {}
@@ -27,3 +29,10 @@ def login(request):
     else:
         messages.warning(request, 'Ya tienes una sesión')
     return HttpResponseRedirect('/')
+
+@login_required
+def captura_lugar(request):
+    data = {
+        'formulario': LugarForm()
+    }
+    return render_to_response('xbapp/captura_lugar.html', data, RequestContext(request))

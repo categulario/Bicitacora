@@ -1,1 +1,20 @@
-captura_lugar.html
+{% extends 'xbapp/template.html' %}
+{% load sekizai_tags staticfiles bootstrap_tags %}
+
+{% block contenido %}
+	{% addtoblock 'css' %}
+		<link rel="stylesheet" type="text/css" href="{% static 'xbapp/css/mapa.css' %}">
+	{% endaddtoblock %}
+
+	{% addtoblock 'js' %}
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			$("#add-lugar-form input, #add-lugar-form select").addClass('form-control');
+		});
+	</script>
+	{% endaddtoblock %}
+	<form id="add-lugar-form" class="form-horizontal">
+		{% csrf_token %}
+		{% form_horizontal formulario %}
+	</form>
+{% endblock %}

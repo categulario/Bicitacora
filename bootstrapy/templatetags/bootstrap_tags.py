@@ -60,8 +60,8 @@ class FormHorizontalObject(template.Node):
             if not elemento.is_hidden:
                 salida += '''
                 <div class="form-group">
-                    <label for="'''+elemento.auto_id+'''" id="'''+elemento.html_name+'''_label">'''+elemento.label+'''</label>
-                    <div class="controls">
+                    <label class="col-md-2 control-label" for="'''+elemento.auto_id+'''" id="'''+elemento.html_name+'''_label">'''+elemento.label+'''</label>
+                    <div class="col-md-10 ">
                       '''+elemento.as_widget()
 
                 if elemento.errors:
