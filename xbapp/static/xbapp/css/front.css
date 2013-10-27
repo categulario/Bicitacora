@@ -13,11 +13,32 @@
  font-family: 'OpenSans-Bold';
  src: url('../fonts/OpenSans-Bold.ttf');
 }
+h1{
+font-size: 29px;
+}
+h2{
+font-size: 21px;
+}
+h3{
+font-size: 19px;
+}
+h4{
+font-size: 17px;
+}
+h5{
+font-size: 15px;
+}
+h6{
+font-size: 12px;
+}
+
 body{
 	font-family: 'Open Sans',arial, sans-serif;
+	font-size:14px;
+	line-height: 1.5em;
 }
 .bold{
-	font-family: OpenSans-Bold;
+	font-weight:bold;
 }
 
 .header{
@@ -40,12 +61,12 @@ body{
 .navf li {
 	margin:0;
 	padding:10px 15px 10px 15px;
-	font-weight:bold;
-	font-size: 19px;
+	font-size: 17px;
 	float:left;
 }
 .navf li:hover {
 	color:#000;
+	cursor: pointer
 }
 .subnav {
 	list-style:none;
@@ -70,8 +91,8 @@ body{
 .navi li a {
 	color: white;
 	padding:10px 15px 10px 15px;
-	font-weight:bold;
-	font-size: 19px;
+	font-weigh:normal;
+	font-size: 17px;
 	float:left;
    -webkit-transition-property: background;
   -webkit-transition-duration: 1s;
@@ -89,16 +110,15 @@ body{
 .menu {
 	margin-top:40px;
 	margin-bottom:40px;
-	margin-left:-40px;
+	margin-left:-10px;
 	color:#FFF;
 	background-color: #ee4024;
 }
 .title{
-	font-family: OpenSans-Light;
 	text-align: center;
 	font-size: 25px;
-	font-weight: bold;
-	margin-left:-90px;
+	font-weight: lighter;
+	margin-left:-80px;
 }
 .content{
 	margin-top:40px;
@@ -121,7 +141,6 @@ body{
 	border: #000 1px solid;
 	margin-bottom:7px;
 	padding:5px;
-	font-family: OpenSans;
 }
 .formulario label{
 	padding-top:10px;
@@ -147,12 +166,10 @@ a.bigboton {
 	margin-bottom: 7px;
 }
 .parraf{
-	font-family: OpenSans;
 	padding: 10px;
 	font-size: 20px;
 }
 .footer .container {
-	font-family: OpenSans;
 	margin-top:25px;
 	background-color: #cccccc;
 }

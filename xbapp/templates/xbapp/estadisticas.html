@@ -1,12 +1,12 @@
 {% extends 'xbapp/template.html' %}
 {% load sekizai_tags staticfiles %}
 
-{% block subtitulo %}Datos de los usuarios de Bicitácora{% endblock %}
 
 {% block contenido %}
-	<h1>Rutas registradas</h1>
+	<h1>Estadísticas</h1>
+	<h2>Rutas registradas</h2>
 	<p class="lead">{{ nrutas }}</p>
-	<h1>Ciclistas por sexo</h1>
+	<h2>Ciclistas por sexo</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<p class="lead">{{ nhombres }} % hombres</p>
