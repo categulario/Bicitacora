@@ -5,6 +5,17 @@ from django.core.exceptions import ValidationError
 
 MODELO_USUARIO = get_user_model()
 
+def valida_ruta(ruta_dict):
+    if 'hora_inicio' in ruta_dict and 'hora_fin' in ruta_dict and 'puntos' in ruta_dict:
+        if type(ruta_dict['puntos'])==list:
+            for punto in ruta_dict['puntos']:
+                if 'latitud' in punto and 'longitud' in punto and 'altitud' in punto and 'indice' in punto:
+                    if type(punto['latitud']) != float or type(punto['longitud']) or type(punto['altitud']) != int or type(punto['indice']) != int:
+                        raise ValidationError('formato de ruta invalido')
+                else:
+                    raise ValidationError('formato de ruta invalido')
+    raise ValidationError('formato de ruta invalido')
+
 def valida_correo(correo):
     try:
         MODELO_USUARIO.objects.get(username=correo)

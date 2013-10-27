@@ -9,4 +9,5 @@ urlpatterns += patterns('xbapp.api',
     url(r'^api/$', 'inicio'),
     url(r'^api/registro$', 'registro'),
     url(r'^api/login$', 'login'),
+    url(r'^api/w/ruta$', 'registra_ruta'),
 )

@@ -5,6 +5,7 @@ from xbapp.forms import APILoginForm
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import auth
 import json
 
 MODELO_USUARIO = get_user_model()
@@ -43,7 +44,7 @@ def registro(request):
 @csrf_exempt
 @require_POST
 def login(request):
-    formulario = APILoginForm()
+    formulario = APILoginForm(request.POST)
     if formulario.is_valid():
         user = auth.authenticate(username=request.POST.get('correo', ''), password=request.POST.get('password', ''))
         if user is not None:
@@ -55,16 +56,28 @@ def login(request):
             else:
                 result = {
                     'error': 3,
-                    'msg': 'usuario bloqueado'
+                    'msg': 'user_bloqued'
                 }
         else:
             result = {
                 'error': 2,
-                'msg': 'usuario no existe'
+                'msg': 'invalid_user'
             }
     else:
         result = {
             'error': 1,
-            'msg': formulario.errors
+            'msg': 'invalid_data'
+        }
+    return HttpResponse(json.dumps(result), content_type='text/plain')
+
+@csrf_exempt
+@require_POST
+def registra_ruta(request):
+    if 'token' in request.POST and 'ruta' in request.POST:
+        pass
+    else:
+        result = {
+            'error': 1,
+            'msg': 'invalid_data'
         }
     return HttpResponse(json.dumps(result), content_type='text/plain')
