@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from xbapp.models import Lugar
+from xbapp.models import Lugar, Ciclista
 import re
 
 MODELO_USUARIO = get_user_model()
@@ -72,3 +72,8 @@ class LugarForm(forms.ModelForm):
     class Meta:
         model = Lugar
         exclude = ('registrante',)
+
+class CiclistaForm(forms.ModelForm):
+    class Meta:
+        model = Ciclista
+        exclude = ('token', 'usuario', 'score')

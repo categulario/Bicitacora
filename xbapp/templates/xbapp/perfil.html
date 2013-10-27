@@ -1,6 +1,29 @@
 {% extends 'xbapp/template.html' %}
-{% load sekizai_tags staticfiles %}
+{% load sekizai_tags staticfiles bootstrap_tags %}
+
+{% block subtitulo %}Tu perfil <em>{{ user.ciclista }}</em>{% endblock %}
 
 {% block contenido %}
-	<strong>Perfil</strong>
+	{% addtoblock 'js' %}
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function(){
+				$("#perfil-form input, #perfil-form select").addClass('form-control');
+			});
+		</script>
+	{% endaddtoblock %}
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="row">
+				<form id="perfil-form" class="form-horizontal" method="post">
+					{% csrf_token %}
+					{% form_horizontal formulario %}
+					<div class="form-controls">
+						<div class="col-md-10 col-md-offset-2">
+							<input type="submit" value="Guardar">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}

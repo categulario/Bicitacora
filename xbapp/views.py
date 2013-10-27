@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from xbapp.forms import LugarForm, APILoginForm
+from xbapp.forms import LugarForm, APILoginForm, CiclistaForm
 from xbapp.models import existe_usuario
 from django.contrib.auth import get_user_model
 
@@ -37,7 +37,11 @@ def login(request):
                 # lo procedemos a inscribir
                 formulario = APILoginForm(request.POST)
                 if formulario.is_valid():
-                    nuevo_usuario = MODELO_USUARIO(username=request.POST.get('correo'))
+                    nuevo_usuario = MODELO_USUARIO(username=request.POST.get('correo'), email=request.POST.get('correo'))
+                    nuevo_usuario.set_password(request.POST.get('password'))
+                    nuevo_usuario.save()
+                    messages.success(request, 'Te has registrado!!')
+                    return HttpResponseRedirect('/')
                 else:
                     messages.warning(request, 'datos de registro inválidos')
                     return HttpResponseRedirect('/')
@@ -62,8 +66,16 @@ def captura(request):
 @login_required
 def perfil(request):
     data = {
-
+        'formulario': CiclistaForm(instance=request.user.ciclista)
     }
+    if request.method == 'POST':
+        formulario = CiclistaForm(request.POST, instance=request.user.ciclista)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, 'Datos actualizados!')
+        else:
+            messages.error(request, 'Alguno de los datos no es válido')
+        data['formulario'] = formulario
     return render_to_response('xbapp/perfil.html', data, RequestContext(request))
 
 @login_required
