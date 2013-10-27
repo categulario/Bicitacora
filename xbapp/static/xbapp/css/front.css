@@ -59,8 +59,8 @@
 }
 .menu {
 	font-family: OpenSans;
-	margin-top:80px;
-	margin-bottom:80px;
+	margin-top:40px;
+	margin-bottom:40px;
 	padding-left:15px;
 	color:#FFF;
 	background-color: #ee4024;
@@ -84,7 +84,7 @@
 	padding-bottom: 10px;
 }
 .subtitle{
-	font-size: 16px;
+	font-size: 22px;
 }
 .formulario input{
     width: 100%;
@@ -94,6 +94,7 @@
 .formulario label{
 	padding-top:10px;
 	padding-bottom:7px;
+	font-size: 18px;
 }
 .bigboton{
     font-family: OpenSans-Bold;
@@ -103,4 +104,12 @@
 	font-size: 16px;
 	margin-top:20px;
 	padding:5px;
+}
+.parraf{
+	font-family: OpenSans;
+	padding: 10px;
+	font-size: 20px;
+}
+.footer .content {
+	background-color: 
 }
