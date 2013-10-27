@@ -31,14 +31,29 @@
 	padding:10px 15px 10px 15px;
 	font-weight:bold;
 	font-size: 19px;
-	float:left; //para eliminar el comportamiento de elemento de bloque(salto de linea)
+	float:left; 
+}
+.navf {  
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.navf li {
+	margin:0;
+	padding:10px 15px 10px 15px;
+	font-weight:bold;
+	font-size: 19px;
+	float:left; 
+}
+.navf li:hover {
+	color:#000;
 }
 .subnavi li {
 	margin:0;
 	padding:10px 15px 10px 15px;
 	font-weight:bold;
 	font-size: 19px;
-	float:left; //para eliminar el comportamiento de elemento de bloque(salto de linea)
+	float:left; 
 }
 .subnav li {
 	color:#fff;
@@ -49,7 +64,7 @@
 	padding:10px 15px 10px 15px;
 	font-weight:bold;
 	font-size: 16px;
-	float:left; //para eliminar el comportamiento de elemento de bloque(salto de linea)
+	float:left; 
 }
 .subnav li:hover{
 	background-color: #ffdf01;
@@ -110,6 +125,8 @@
 	padding: 10px;
 	font-size: 20px;
 }
-.footer .content {
-	background-color: 
+.footer .container {
+	font-family: OpenSans;
+	margin-top:25px;
+	background-color: #cccccc;
 }
