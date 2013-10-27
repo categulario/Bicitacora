@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from xbapp.forms import LugarForm, APILoginForm, CiclistaForm
 from xbapp.models import existe_usuario, Ruta, Ciclista
+from xbapp.queries import cuenta_ciclistas
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import datetime
@@ -114,7 +115,7 @@ def estadisticas(request):
 
     edades = [{
         'rango': '%d-%d'%(i, i+10),
-        'cantidad': Ciclista.objects.raw()
+        'cantidad': cuenta_ciclistas(i, i+10)
     } for i in [j*10 for j in xrange(10)]]
 
     if settings.DEBUG:
@@ -135,3 +136,4 @@ def contacto(request):
 
     }
     return render_to_response('xbapp/contacto.html', data, RequestContext(request))
+

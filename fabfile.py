@@ -101,6 +101,16 @@ def errors(n=10):
         run("tail -n %d error.log"%int(n))
 
 @task
+def access_api():
+    with cd(DJANGO_APP_ROOT):
+        run("cat access.log | grep api")
+
+@task
+def access(n=10):
+    with cd(DJANGO_APP_ROOT):
+        run("tail -n %d access.log | grep api"%int(n))
+
+@task
 def syncdb():
     with virtualenv(VENV_DIR):
         with cd(DJANGO_APP_ROOT):
