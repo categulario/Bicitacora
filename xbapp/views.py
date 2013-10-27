@@ -102,7 +102,7 @@ def estadisticas(request):
     hombres = ciclistas.filter(sexo='M').count()
     data = {
         'nrutas': Ruta.objects.count(),
-        'nhombres': ''
+        'nhombres': '',
     }
     return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
 
