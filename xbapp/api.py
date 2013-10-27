@@ -88,7 +88,7 @@ def registra_ruta(request):
             else:
                 try:
                     valida_ruta(ruta_dict)
-                    # Si pasa la validación
+                    # Si pasa la validación, guardamos la ruta
                     result = {
                         'error': '',
                         'msg': 'ok'

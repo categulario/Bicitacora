@@ -29,6 +29,8 @@ class Ruta(models.Model):
     hora_inicio         = models.DateTimeField()
     hora_fin            = models.DateTimeField()
     ciclista            = models.ForeignKey(Ciclista)
+    longitud            = models.FloatField()
+    desplazamiento      = models.FloatField()
 
 class Punto(models.Model):
     """Define un punto de una ruta marcado por el GPS"""
