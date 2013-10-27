@@ -85,6 +85,8 @@
 	text-align: center;
 	font-size: 25px;
 	font-weight: bold;
+	margin-left:-100px;
+
 }
 .content{
 	margin-top:40px;
