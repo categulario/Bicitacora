@@ -15,6 +15,10 @@
 			<p class="lead">{{ nmujeres }} % mujeres</p>
 		</div>
 	</div>
-	<h1>Edad media</h1>
+	<h2>Edad media</h2>
 	<p class="lead">{{ edad_media }} años</p>
+	<h2>Edades por rango</h2>
+	{% for edad in edades %}
+		<p>{{ edad.rango }}: {{ edad.cantidad }}</p>
+	{% endfor %}
 {% endblock %}
