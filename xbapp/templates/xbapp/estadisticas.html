@@ -33,13 +33,13 @@
 	{% for edad in edades %}
 			<div class="row">
 				<div class="col-md-4">
-					{{ edad.rango }}
+					<span class="label label-primary">{{ edad.rango }} Total:{{ edad.cantidad }} </span>
 				</div>
 
 				<div class="col-md-8">
 					<div class="progress">
   						<div class="progress-bar progress-bar-primary" style="width: {{ edad.porcentaje }}%">
-    						<span class="sr-only">{{ nhombres }} % hombres </span>
+    						<span class="sr-only">{{ edad.porcentaje }}%</span>
   						</div>
 					</div>
 				</div>
