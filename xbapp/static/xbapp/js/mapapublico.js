@@ -9,10 +9,30 @@ function getRuta () {
     dataType: 'json',
     type: 'get',
     url: '/api/r/rutas',
-    success: function(json){
-      toastr.success('La ruta ha sido guardada', 'Genial :D');
-    },error: function(){
-      toastr.error('Ha ocurrio un error u.u', 'Oh, no!');
+    success: function(rutas){
+    	dibujarRutas(rutas);
     }
   });
+}
+
+function dibujarRutas(rutas){
+	colors = ['#FF0000','#00FF00', '#0000FF'];
+  	for (i in rutas){
+  		ruta = [];
+  		puntos = rutas[i].puntos;
+  		for ( punto in puntos){
+  			lat = puntos[punto].latitud;
+  			lng = puntos[punto].longitud;
+  			ruta.push(new google.maps.LatLng(lat,lng));
+
+  		}
+	  	new google.maps.Polyline({
+	    	path: ruta,
+	    	strokeColor: colors[i],
+	    	strokeOpacity: 1.0,
+	    	strokeWeight: 2,
+	    	map: map
+	  	});
+  	}
+
 }
