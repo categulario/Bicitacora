@@ -86,9 +86,21 @@
 		<div class="footer">
 			<div class="container">
 				<ul class="navf">
-					<li>Proyecto</li>
-				    <li>Estadísticas</li>
-					<li>Contacto</li>
+						<li>
+							<a href="{% url 'xbapp.views.inicio' %}">Inicio</a>
+						</li>
+						<li>
+							<a href="{% url 'xbapp.views.proyecto' %}">Proyecto</a>
+						</li>
+						<li>
+							<a href="{% url 'xbapp.views.estadisticas' %}">Estadísticas</a>
+						</li>
+						<li>
+							<a href="{% url 'xbapp.views.captura' %}">Captura</a>
+						</li>
+						<li>
+							<a href="{% url 'xbapp.views.contacto' %}">Contacto</a>
+						</li>
 				</ul>
 			</div>
 		</div>

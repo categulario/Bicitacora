@@ -58,13 +58,15 @@ body{
 	margin:0;
 	padding:0;
 }
-.navf li {
+.navf li a{
+	text-decoration: none;
 	margin:0;
 	padding:10px 15px 10px 15px;
 	font-size: 17px;
 	float:left;
 }
-.navf li:hover {
+.navf li a:hover {
+	text-decoration: none;
 	color:#000;
 	cursor: pointer
 }
