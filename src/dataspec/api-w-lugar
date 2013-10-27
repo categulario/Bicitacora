@@ -1,0 +1,13 @@
+{
+	"hora_inicio"	: "2012-12-31 09:08:33",
+	"hora_fin"		: "2012-12-31 09:08:33",
+	"puntos"		: [
+		{
+			"latitud"	: 21.8989,
+			"longitud"	: 21.8989,
+			"altitud"	: 1420,
+		}
+	],
+	"longitud"			: 12.3,
+	"desplazamiento"	: 8.3
+}
