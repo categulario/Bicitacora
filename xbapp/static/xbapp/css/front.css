@@ -28,10 +28,7 @@
 }
 .navi li {
 	margin:0;
-	padding:10px 15px 10px 15px;
-	font-weight:bold;
-	font-size: 19px;
-	float:left;
+	padding:0;
 }
 .navf {
 	list-style:none;
@@ -48,12 +45,10 @@
 .navf li:hover {
 	color:#000;
 }
-.subnavi li {
+.subnav {
+	list-style:none;
 	margin:0;
-	padding:10px 15px 10px 15px;
-	font-weight:bold;
-	font-size: 19px;
-	float:left;
+	padding:0;
 }
 .subnav li {
 	color:#fff;
@@ -68,13 +63,26 @@
 }
 .subnav li:hover{
 	background-color: #ffdf01;
+	cursor: pointer;
 }
 .navi li a {
 	color: white;
+	padding:10px 15px 10px 15px;
+	font-weight:bold;
+	font-size: 19px;
+	float:left;
+   -webkit-transition-property: background;
+  -webkit-transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-property: background;
+  -moz-transition-duration: 1s;
+  -moz-transition-timing-function: ease;
+
 }
 .navi li a:hover{
 	color: #FFDE01;
 	text-decoration: none;
+	background: #d62e11;
 }
 .menu {
 	font-family: OpenSans;
@@ -111,6 +119,8 @@
 	width: 100%;
 	border: #000 1px solid;
 	margin-bottom:7px;
+	padding:5px;
+	font-family: OpenSans;
 }
 .formulario label{
 	padding-top:10px;
@@ -147,8 +157,21 @@ a.bigboton {
 }
 .logo{
 	padding-left:20px;
+	width: 228px;
+}
+.proyecto{
+	text-align : justify;
 }
 .errorlist {
 	color: red;
 	font-size: 12px;
+}
+.list_nombres{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.list_nombres li {
+	margin:0;
+	padding:0 0 0 10px;
 }
