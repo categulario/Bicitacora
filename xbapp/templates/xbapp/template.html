@@ -61,7 +61,8 @@
 								<input class="bigboton" type="submit" value="Participar">
 							</form>
 						{% else %}
-							hola <strong>{{ request.user.ciclista }}</strong>
+							Hola <strong>{{ request.user.ciclista }}</strong><br>
+							<a href="{% url 'xbapp.views.logout' %}">salir</a>
 						{% endif %}
 					</div>
 					<div class="parraf">Ayudanos a recolectar datos sobre el uso de la bicicleta</div>

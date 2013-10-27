@@ -5,6 +5,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 from xbapp.forms import LugarForm
 
 def inicio(request):
@@ -28,6 +29,12 @@ def login(request):
             messages.error(request, 'Nadie registrado con ese correo, verifique por favor')
     else:
         messages.warning(request, 'Ya tienes una sesión')
+    return HttpResponseRedirect('/')
+
+@login_required
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'Nos vemos pronto')
     return HttpResponseRedirect('/')
 
 @login_required
