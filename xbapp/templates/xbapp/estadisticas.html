@@ -8,11 +8,15 @@
 	<p class="lead">{{ nrutas }}</p>
 	<h2>Ciclistas por sexo</h2>
 	<div class="row">
-		<div class="col-md-6">
-			<p class="lead">{{ nhombres }} % hombres</p>
-		</div>
-		<div class="col-md-6">
-			<p class="lead">{{ nmujeres }} % mujeres</p>
+		<div class="col-md-12">
+			<div class="progress">
+  				<div class="progress-bar progress-bar-success" style="width: {{ nhombres }}%">
+    				<span class="sr-only">{{ nhombres }} % hombres </span>
+  				</div>
+  				<div class="progress-bar progress-bar-warning" style="width: {{ nmujeres }}%">
+    				<span class="sr-only">{{ nmujeres }} % mujeres/span>
+  				</div>
+			</div>
 		</div>
 	</div>
 	<h2>Edad media</h2>
