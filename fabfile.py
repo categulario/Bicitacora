@@ -111,6 +111,11 @@ def access(n=10):
         run("tail -n %d access.log"%int(n))
 
 @task
+def access(n=10):
+    with cd(DJANGO_APP_ROOT):
+        run("tail -n %d debug.log"%int(n))
+
+@task
 def syncdb():
     with virtualenv(VENV_DIR):
         with cd(DJANGO_APP_ROOT):
