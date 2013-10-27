@@ -199,3 +199,13 @@ def obtener_token(request):
         'error': 0
     }
     return HttpResponse(json.dumps(result), content_type='text/plain')
+
+@require_GET
+def rutas(request):
+    lista_rutas = [{
+        'puntos': [{
+            'latitud': p.latitud,
+            'longitud': p.longitud,
+        } for p in r.puntos.all()]
+    } for r in Ruta.objects.all()[:10]]
+    return HttpResponse(json.dumps(lista_rutas), content_type='text/plain')

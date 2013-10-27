@@ -46,7 +46,7 @@ class Punto(models.Model):
     latitud             = models.FloatField()
     longitud            = models.FloatField()
     altitud             = models.IntegerField()
-    ruta                = models.ForeignKey(Ruta)
+    ruta                = models.ForeignKey(Ruta, related_name='puntos')
 
     def __unicode__(self):
         return u"(%fº, %fº) a %d msnm"%(self.latitud, self.longitud, self.altitud)
