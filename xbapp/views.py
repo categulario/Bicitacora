@@ -99,10 +99,13 @@ def proyecto(request):
 
 def estadisticas(request):
     ciclistas = Ciclista.objects.all()
-    hombres = ciclistas.filter(sexo='M').count()
+    total = ciclistas.count()
+    hombres = float(ciclistas.filter(sexo='M').count())/total*100
+    mujeres = 100-hombres
     data = {
         'nrutas': Ruta.objects.count(),
-        'nhombres': '',
+        'nhombres': '%.2f'%hombres,
+        'nmujeres': '%.2f'%mujeres,
     }
     return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
 
