@@ -74,7 +74,19 @@ def login(request):
 @require_POST
 def registra_ruta(request):
     if 'token' in request.POST and 'ruta' in request.POST:
-        pass
+        try:
+            usuario = MODELO_USUARIO.objects.get(token=request.POST.get('token', ''))
+            try:
+                pass
+            except ValueError:
+                result = {
+                    'error': 1
+                }
+        except MODELO_USUARIO.DoesNotExist:
+            result = {
+                'error': 2,
+                'msg': 'invalid_user'
+            }
     else:
         result = {
             'error': 1,
