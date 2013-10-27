@@ -21,3 +21,7 @@ class APIRegistroForm(forms.Form):
     fecha_nacimiento    = forms.DateField()
     correo              = forms.EmailField(validators=[valida_correo])
     password            = forms.CharField(min_length=6)
+
+class APILoginForm(forms.Form):
+    correo              = forms.EmailField()
+    password            = forms.CharField(min_length=6)
