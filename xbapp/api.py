@@ -2,10 +2,12 @@
 from django.http import HttpResponse
 from xbapp.forms import APIRegistroForm
 from xbapp.forms import APILoginForm
+from xbapp.forms import valida_ruta
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
+from django.core.exceptions import ValidationError
 import json
 
 MODELO_USUARIO = get_user_model()
@@ -75,13 +77,24 @@ def login(request):
 def registra_ruta(request):
     if 'token' in request.POST and 'ruta' in request.POST:
         try:
-            usuario = MODELO_USUARIO.objects.get(token=request.POST.get('token', ''))
+            usuario = MODELO_USUARIO.objects.get(ciclista__token=request.POST.get('token', ''))
             try:
-                pass
+                ruta_dict = json.loads(request.POST.get('ruta', '{}'))
             except ValueError:
                 result = {
-                    'error': 1
+                    'error': 1,
+                    'msg': 'formato_invalido_no_json'
                 }
+            else:
+                try:
+                    valida_ruta(ruta_dict)
+                    # Si pasa la validación
+                except ValidationError, ve:
+                    print ve.args
+                    result = {
+                        'error': 1,
+                        'msg': str(ve)
+                    }
         except MODELO_USUARIO.DoesNotExist:
             result = {
                 'error': 2,

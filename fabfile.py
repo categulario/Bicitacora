@@ -4,6 +4,9 @@ from fabric.api import local, settings, abort, run, env
 from fabric.contrib.console import confirm
 from fabric.context_managers import cd, lcd, settings, hide
 from fabric.decorators import task
+import urllib
+import urllib2
+import json
 
 APP_NAME = 'XBTrack'
 USER = 'developingo'
@@ -117,3 +120,32 @@ def deploy():
     migrate()
     static()
     server_restart()
+
+@task
+def tsapiruta():
+    ruta = {
+        "hora_inicio"   : "2012-12-31 09:08:33",
+        "hora_fin"      : "2012-12-31 09:08:33",
+        "puntos"        : [
+            {
+                "latitud"   : 21.8989,
+                "longitud"  : 19.8989,
+                "altitud"   : 1420,
+            }
+        ],
+        "longitud"          : 12.3,
+        "desplazamiento"    : 8.3
+    }
+    data = urllib.urlencode({
+        'token': '133da770-3e97-11e3-82a5-701a0416ad73',
+        'ruta': json.dumps(ruta)
+    })
+    res = urllib2.urlopen(
+        'http://ab-dev:8000/api/w/ruta',
+        data
+    )
+    print res.read()
+
+@task
+def test():
+    pass
