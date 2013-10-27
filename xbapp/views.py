@@ -71,16 +71,16 @@ def proyecto(request):
     data = {
 
     }
-    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+    return render_to_response('xbapp/proyecto.html', data, RequestContext(request))
 @login_required
 def estadisticas(request):
     data = {
 
     }
-    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+    return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
 @login_required
 def contacto(request):
     data = {
 
     }
-    return render_to_response('xbapp/perfil.html', data, RequestContext(request))
+    return render_to_response('xbapp/contacto.html', data, RequestContext(request))
