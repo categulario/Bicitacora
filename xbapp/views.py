@@ -91,19 +91,18 @@ def perfil(request):
         data['formulario'] = formulario
     return render_to_response('xbapp/perfil.html', data, RequestContext(request))
 
-@login_required
 def proyecto(request):
     data = {
 
     }
     return render_to_response('xbapp/proyecto.html', data, RequestContext(request))
-@login_required
+
 def estadisticas(request):
     data = {
 
     }
     return render_to_response('xbapp/estadisticas.html', data, RequestContext(request))
-@login_required
+
 def contacto(request):
     data = {
 
