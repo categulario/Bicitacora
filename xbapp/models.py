@@ -1,6 +1,10 @@
 # -*- coding:utf-8 -*-
 from django.db import models
 from django.contrib.auth import get_user_model
+from uuid import uuid1
+
+def crea_uid():
+    return str(uuid1())
 
 class Ciclista(models.Model):
     """Define a un usuario del sistema"""
@@ -14,7 +18,8 @@ class Ciclista(models.Model):
     ), default='M')
     fecha_nacimiento    = models.DateField(blank=True, null=True)
     fecha_registro      = models.DateField(auto_now_add=True)
-    usuario             = models.ForeignKey(get_user_model())
+    usuario             = models.OneToOneField(get_user_model())
+    token               = models.CharField(max_length=36, default=crea_uid)
 
     def __unicode__(self):
         return self.nombre
