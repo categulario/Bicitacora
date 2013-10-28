@@ -11,7 +11,7 @@ def cuenta_ciclistas(de=10, a=20):
 
         return row[0]
     elif cursor.db.settings_dict['ENGINE'].endswith('sqlite3'):
-        cursor.execute("SELECT count(*) AS cuenta FROM xbapp_ciclista WHERE (strftime('%Y','now')-strftime('%Y', fecha_nacimiento)) - (strftime('%m-%d', 'now')<strftime('%m-%d', fecha_nacimiento))>=%s AND (strftime('%Y','now')-strftime('%Y', fecha_nacimiento)) - (strftime('%m-%d', 'now')<strftime('%m-%d', fecha_nacimiento))<=%s", [de, a])
+        cursor.execute("SELECT count(*) AS cuenta FROM xbapp_ciclista WHERE (strftime('%%Y','now')-strftime('%%Y', fecha_nacimiento)) - (strftime('%%m-%%d', 'now')<strftime('%%m-%%d', fecha_nacimiento))>=%s AND (strftime('%%Y','now')-strftime('%%Y', fecha_nacimiento)) - (strftime('%%m-%%d', 'now')<strftime('%%m-%%d', fecha_nacimiento))<=%s", [de, a])
 
         row = cursor.fetchone()
 
