@@ -22,10 +22,14 @@ Tratar de seguir este procedimiento en windows podría ser un dolor en el traser
 	y cuando pide el correo también hay que dar el correo. No olvidar estos datos por favor
 * Correr las migraciones `./manage_dev.py migrate --fake`
 * Correr el servidor `./manage_dev.py runserver`
-* Visitar en un navegador la dirección `http://localhost:8000`
+* Visitar en un navegador la dirección `http://localhost:8000/perfil` y llenar los datos del perfil
+* ¡Listo!
 
 ### Desarrollar
 
 4 sencillos pasos
 
-*
+* En un terminal, ir a la carpeta `EntornoBicitacora`
+* Activar el entorno `source bin/activate`
+* Entrar al repo `cd Bicitacora`
+* correr el servidor `./manage_dev.py runserver`
