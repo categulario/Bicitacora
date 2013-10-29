@@ -1,4 +1,4 @@
-XBTrack
+Bicitacora
 =======
 
 
@@ -38,3 +38,8 @@ Tratar de seguir este procedimiento en windows podría ser un dolor en el traser
 * Activar el entorno `source bin/activate`
 * Entrar al repo `cd Bicitacora`
 * correr el servidor `./manage_dev.py runserver`
+
+### Demo web
+
+<http://bicitacora.developingo.webfactional.com>
+
