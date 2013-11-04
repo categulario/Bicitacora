@@ -2,7 +2,7 @@
 import os
 PROJECT_PATH = os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), '../'))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -16,10 +16,10 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xbtrack',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'xbtrack.db',
         'USER': 'xbtrack',
-        'PASSWORD': 'swUXNC8BM25yGvBW',
+        'PASSWORD': 'xbtrack',
         'HOST': '',
         'PORT': '',
     }
@@ -27,7 +27,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['bicitacora.developingo.webfactional.com']
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -54,22 +54,22 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/home/developingo/webapps/bicitacorastatic/media/'
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = 'http://bicitacorastatic.developingo.webfactional.com/media/'
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/home/developingo/webapps/bicitacorastatic/static/'
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = 'http://bicitacorastatic.developingo.webfactional.com/static/'
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -174,13 +174,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     'sekizai.context_processors.sekizai',
 )
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'mSdcfeG012'
-EMAIL_HOST_USER = 'a.wonderful.code@gmail.com'
-EMAIL_PORT = 587
-EMAIL_SUBJECT_PREFIX = '[Bicitacora] '
-EMAIL_USE_TLS = True
 
 LOGIN_URL = '/'

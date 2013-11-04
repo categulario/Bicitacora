@@ -6,6 +6,9 @@
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script src="{% static 'xbapp/js/graficas.js' %}"></script>
 	<h1>Estadísticas</h1>
+	<h2>Ciclistas registrados (falta el dato)</h2>
+	<p class="lead">{{ nrutas }}</p>
+	
 	<h2>Rutas registradas</h2>
 	<p class="lead">{{ nrutas }}</p>
 	<h2>Ciclistas por sexo</h2>
@@ -24,6 +27,15 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-6">
+		<span class="label label-primary">Hombres {{ nhombres }} %</span>
+		</div>
+		<div class="col-md-6">
+			<span class="label label-success">Mujeres {{ nmujeres }} % </span>
+		</div>
+	</div>
+	<h2>Edad media</h2>
 	<p class="lead">{{ edad_media }} años</p>
 	<h2>Edades por rango</h2>
 	{% for edad in edades %}
