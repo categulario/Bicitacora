@@ -3,18 +3,23 @@
 
 
 {% block contenido %}
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script src="{% static 'xbapp/js/graficas.js' %}"></script>
 	<h1>Estadísticas</h1>
 	<h2>Rutas registradas</h2>
 	<p class="lead">{{ nrutas }}</p>
 	<h2>Ciclistas por sexo</h2>
 	<div class="row">
+		<div id="piechart" ></div>
+	</div>
+	<div class="row">
 		<div class="col-md-12">
 			<div class="progress">
   				<div class="progress-bar progress-bar-primary" style="width: {{ nhombres }}%">
-    				<span class="sr-only">{{ nhombres }} % hombres </span>
+    				<span id="nhombres" data-n="{{ nhombres }}" class="sr-only">{{ nhombres }} % hombres </span>
   				</div>
   				<div class="progress-bar progress-bar-success" style="width: {{ nmujeres }}%">
-    				<span class="sr-only">{{ nmujeres }} % mujeres</span>
+    				<span  id="nmujeres" data-n="{{ nmujeres }}" class="sr-only">{{ nmujeres }} % mujeres</span>
   				</div>
 			</div>
 		</div>
@@ -36,4 +41,6 @@
 				</div>
 			</div>
 	{% endfor %}
+	
+
 {% endblock %}
