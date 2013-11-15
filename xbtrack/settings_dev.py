@@ -102,8 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'xbtrack.urls'
@@ -130,6 +129,7 @@ INSTALLED_APPS = (
     'sekizai',
     'xbapp',
     'bootstrapy',
+    'debug_toolbar',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -176,3 +176,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 LOGIN_URL = '/'
+INTERNAL_IPS = ('127.0.0.1',)

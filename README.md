@@ -21,7 +21,7 @@ Tratar de seguir este procedimiento en windows podría ser un dolor en el traser
 * Activar el entorno `source bin/activate`
 * Clonar el proyecto `git clone https://github.com/developingo/Bicitacora.git`
 * Entrar al repositorio `cd Bicitacora`
-* Instalar las dependencias `pip install -r requirements_weak.txt`
+* Instalar las dependencias `pip install -r requirements_dev.txt`
 * Instalar la base de datos `./manage_dev.py syncdb --all`.
 	Esto pregunta por la creación de un usuario, decir que si y seguir el procedimiento es buena idea. Cuando pide el nombre de usuario hay que poner el correo
 	y cuando pide el correo también hay que dar el correo. No olvidar estos datos por favor
