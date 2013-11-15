@@ -104,14 +104,18 @@ def proyecto(request):
     return render_to_response('xbapp/proyecto.html', data, RequestContext(request))
 
 def estadisticas(request):
-    ciclistas = Ciclista.objects.all()
-    total = ciclistas.count()
-    hombres = float(ciclistas.filter(sexo='M').count())/total*100
+    num_ciclistas = Ciclista.objects.all()
+    total = num_ciclistas.count()
+
+    num_hombres = num_ciclistas.filter(sexo='M').count()
+    num_mujeres = total-num_hombres
+
+    hombres = float(num_hombres)/total*100
     mujeres = 100-hombres
 
     hoy = datetime.date.today()
 
-    edad_media = sum([c.edad() for c in ciclistas if c.fecha_nacimiento])/(ciclistas.filter(fecha_nacimiento__isnull=False).count())
+    edad_media = sum([c.edad() for c in num_ciclistas if c.fecha_nacimiento])/(num_ciclistas.filter(fecha_nacimiento__isnull=False).count())
 
     edades = [{
         'rango': '%d-%d'%(i, i+10),
@@ -125,8 +129,10 @@ def estadisticas(request):
     data = {
         'nrutas': Ruta.objects.count(),
         'nciclistas': total,
-        'nhombres': '%.2f'%hombres,
-        'nmujeres': '%.2f'%mujeres,
+        'hombres': '%.2f'%hombres,
+        'mujeres': '%.2f'%mujeres,
+        'num_hombres': num_hombres,
+        'num_mujeres': num_mujeres,
         'edad_media': edad_media,
         'edades': edades
     }
