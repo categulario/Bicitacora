@@ -30,7 +30,7 @@ Tratar de seguir este procedimiento en windows podría ser un dolor en el traser
 * Visitar en un navegador la dirección `http://localhost:8000/perfil` y llenar los datos del perfil
 * ¡Listo!
 
-### Desarrollar
+### Desarrollar j
 
 4 sencillos pasos
 
