@@ -8,8 +8,8 @@ function graficaSexo () {
 function drawSexo() {
         var data = google.visualization.arrayToDataTable([
           ['Ciclistas', 'Ciclistas por sexo'],
-          ['Hombres',     parseInt($('#nhombres').data("n"))],
-          ['Mujeres',      parseInt($('#nmujeres').data("n"))]
+          ['Hombres',     parseInt($('#hombres').data("n"))],
+          ['Mujeres',      parseInt($('#mujeres').data("n"))]
         ]);
 
         var options = {

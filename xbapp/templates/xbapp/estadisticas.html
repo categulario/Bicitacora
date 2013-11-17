@@ -1,14 +1,13 @@
 {% extends 'xbapp/template.html' %}
 {% load sekizai_tags staticfiles %}
 
-
 {% block contenido %}
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script src="{% static 'xbapp/js/graficas.js' %}"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="{% static 'xbapp/js/graficas.js' %}"></script>
 	<h1>Estadísticas</h1>
 	<h2>Ciclistas registrados (falta el dato)</h2>
 	<p class="lead">{{ nrutas }}</p>
-	
+
 	<h2>Rutas registradas</h2>
 	<p class="lead">{{ nrutas }}</p>
 	<div class="row">
@@ -17,41 +16,39 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="progress">
-  				<div class="progress-bar progress-bar-primary" style="width: {{ nhombres }}%">
-    				<span id="nhombres" data-n="{{ nhombres }}" class="sr-only">{{ nhombres }} % hombres </span>
-  				</div>
-  				<div class="progress-bar progress-bar-success" style="width: {{ nmujeres }}%">
-    				<span  id="nmujeres" data-n="{{ nmujeres }}" class="sr-only">{{ nmujeres }} % mujeres</span>
-  				</div>
+					<div class="progress-bar progress-bar-primary" style="width: {{ hombres }}%">
+						<span id="hombres" data-n="{{ num_hombres }}" class="sr-only">{{ hombres }} % hombres </span>
+					</div>
+					<div class="progress-bar progress-bar-success" style="width: {{ mujeres }}%">
+						<span  id="mujeres" data-n="{{ num_mujeres }}" class="sr-only">{{ mujeres }} % mujeres</span>
+					</div>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-		<span class="label label-primary">Hombres {{ nhombres }} %</span>
+		<span class="label label-primary">Hombres {{ hombres }} %</span>
 		</div>
 		<div class="col-md-6">
-			<span class="label label-success">Mujeres {{ nmujeres }} % </span>
+			<span class="label label-success">Mujeres {{ mujeres }} % </span>
 		</div>
 	</div>
 	<h2>Edad media</h2>
 	<p class="lead">{{ edad_media }} años</p>
 	<h2>Edades por rango</h2>
 	{% for edad in edades %}
-			<div class="row">
-				<div class="col-md-4">
-					<span class="label label-primary">{{ edad.rango }} Total:{{ edad.cantidad }} </span>
-				</div>
+		<div class="row">
+			<div class="col-md-4">
+				<span class="label label-primary">{{ edad.rango }} Total:{{ edad.cantidad }} </span>
+			</div>
 
-				<div class="col-md-8">
-					<div class="progress">
-  						<div class="progress-bar progress-bar-primary" style="width: {{ edad.porcentaje }}%">
-    						<span class="sr-only">{{ edad.porcentaje }}%</span>
-  						</div>
-					</div>
+			<div class="col-md-8">
+				<div class="progress">
+						<div class="progress-bar progress-bar-primary" style="width: {{ edad.porcentaje }}%">
+							<span class="sr-only">{{ edad.porcentaje }}%</span>
+						</div>
 				</div>
 			</div>
+		</div>
 	{% endfor %}
-	
-
 {% endblock %}

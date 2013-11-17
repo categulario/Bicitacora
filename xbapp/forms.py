@@ -75,6 +75,7 @@ class LugarForm(forms.ModelForm):
 
 class CiclistaForm(forms.ModelForm):
     nombre              = forms.CharField(required=True)
+    fecha_nacimiento    = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'dd/mm/AAAA'}))
     class Meta:
         model = Ciclista
         exclude = ('token', 'usuario', 'score')

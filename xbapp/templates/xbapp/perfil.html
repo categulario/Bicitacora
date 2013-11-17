@@ -8,7 +8,9 @@
 			$(document).ready(function(){
 				$("#perfil-form input, #perfil-form select").addClass('form-control');
 			});
-			$('#id_fecha_nacimiento').datepicker()
+			$('#id_fecha_nacimiento').datepicker({
+				format: 'dd/mm/yyyy'
+			})
 		</script>
 	{% endaddtoblock %}
 	{% addtoblock 'css' %}
